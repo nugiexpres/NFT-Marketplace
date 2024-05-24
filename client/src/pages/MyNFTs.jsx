@@ -7,7 +7,7 @@ import { useBlockchainContext } from "../context/BlockchainContext";
 const MyNFTs = () => {
   const { contract, currentAccount } = useBlockchainContext();
   const [myNFTIds, setMyNFTIds] = useState([]);
-  const [loading, setLoading] = useState(true); // Introduce loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const loadMyNFTs = async () => {

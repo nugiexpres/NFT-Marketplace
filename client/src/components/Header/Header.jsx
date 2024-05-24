@@ -35,24 +35,24 @@ const Header = () => {
 
   const { currentAccount } = useBlockchainContext();
 
-useEffect(() => {
-  const handleScroll = () => {
-    if (
-      document.body.scrollTop > 80 ||
-      document.documentElement.scrollTop > 80
-    ) {
-      headerRef.current.classList.add("header__shrink");
-    } else {
-      headerRef.current.classList.remove("header__shrink");
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__shrink");
+      } else {
+        headerRef.current.classList.remove("header__shrink");
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll); // Add event listener
+    window.addEventListener("scroll", handleScroll); // Add event listener
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll); // Remove the event listener
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Remove the event listener
+    };
+  }, []);
 
   const toggleMenu = () => menuRef.current.classList.toggle("active__menu");
 
@@ -89,9 +89,11 @@ useEffect(() => {
             <ul className="nav__list">
               {NAV__LINKS.map((item, index) => (
                 <li className="nav__item" key={index}>
-                   <NavLink
+                  <NavLink
                     to={item.url}
-                    className={(navClass) => (navClass.isActive ? "active" : "")}
+                    className={(navClass) =>
+                      navClass.isActive ? "active" : ""
+                    }
                   >
                     {item.display}
                   </NavLink>
@@ -101,13 +103,13 @@ useEffect(() => {
           </div>
 
           <div className="nav__right d-flex align-items-center gap-5 ">
-          {currentAccount ? (
-            <button className="btn d-flex gap-2 align-items-center">
-            <span>
-              <i className="ri-wallet-line"></i>
-            </span>
-            <Link to="/wallet">{formatAddress(currentAccount)}</Link>
-          </button>
+            {currentAccount ? (
+              <button className="btn d-flex gap-2 align-items-center">
+                <span>
+                </span>
+                  <i className="ri-wallet-line"></i>
+                <Link to="/wallet">{formatAddress(currentAccount)}</Link>
+              </button>
             ) : (
               <button className="btn d-flex gap-2 align-items-center">
                 <span>
